@@ -1,0 +1,13 @@
+.nuxt
+
+node_modules/
+
+dist
+
+.cache/
+
+dist/
+
+.env
+
+.vscode/ 
