@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="mx-auto">
+    <Header />
     <v-row class="mt-6">
       <v-col>
         <v-bottom-navigation v-model="bottomNav" width="180px" class="mx-auto">
@@ -23,9 +24,21 @@
     </div>
     <div v-else>
       <base-latest
-        :data="latestSpaceX"
         :duration="recentLaunchDate"
+        :data="latestSpaceX"
       ></base-latest>
+    </div>
+    <div class="click_options mx-auto mt-6">
+      <nuxt-link :to="'/launches/upcoming'">
+        <v-btn class="ma-2" outlined round color="indigo">
+          Click to See Upcoming Launches
+        </v-btn>
+      </nuxt-link>
+      <nuxt-link :to="'/launches/past'">
+        <v-btn class="ma-2" outlined round color="indigo">
+          Click to See Past Launches
+        </v-btn></nuxt-link
+      >
     </div>
   </div>
 </template>
@@ -38,9 +51,11 @@ import "moment-duration-format"
 
 import BaseLatest from "@/components/BaseLatest"
 import BaseNext from "@/components/BaseNext"
+import Header from "@/components/Header"
 
 export default {
   components: {
+    Header,
     BaseNext,
     BaseLatest
   },
@@ -77,6 +92,7 @@ export default {
   async fetch({ store }) {
     await store.dispatch("sources/getLatestSpaceX")
     await store.dispatch("sources/getNextSpaceX")
+    await store.dispatch("sources/getLaunchesSpaceX")
   },
   mounted() {
     this.parseDate()
@@ -112,3 +128,17 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.click_options {
+  display: flex;
+  flex-direction: row;
+}
+@media (max-width: 639px) {
+  .click_options {
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+  }
+}
+</style>

@@ -50,6 +50,9 @@ ul > li {
   padding-bottom: 10px;
 }
 @media (max-width: 639px) {
+  .container {
+    width: 450px;
+  }
   .content_info {
     display: flex;
     flex-direction: column;

@@ -1,26 +1,26 @@
-import colors from 'vuetify/es5/util/colors'
+import colors from "vuetify/es5/util/colors"
 
 export default {
-  mode: 'spa',
+  mode: "spa",
   htmlAttrs: {
-    lang: 'en'
+    lang: "en"
   },
   head: {
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
+        hid: "description",
+        name: "description",
+        content: process.env.npm_package_description || ""
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/spaceX_logo.ico' }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "/spaceX_logo.ico" }]
   },
-  loading: { color: '#fff' },
+  loading: { color: "#fff" },
   plugins: [],
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
-  modules: ['@nuxtjs/axios'],
+  buildModules: ["@nuxtjs/eslint-module", "@nuxtjs/vuetify"],
+  modules: ["@nuxtjs/axios"],
   axios: {},
   vuetify: {
     theme: {

@@ -17,5 +17,11 @@ export default {
   async latestSpaceX() {
     const response = await api.get("/latest")
     return response.data
+  },
+  async launchesSpaceX() {
+    const response = await api.get()
+    // eslint-disable-next-line no-console
+    console.log(response.data[22])
+    return response.data
   }
 }
