@@ -1,18 +1,7 @@
 <template>
   <div>
     <Header />
-    <div class="title-icon">
-      <v-alert
-        color="rgb(87, 99, 102)"
-        elevation="20"
-        class="mt-8"
-        dark
-        icon="mdi-firework"
-        dense
-      >
-        <span class="font-italic font-weight-thin">Upcoming</span>
-      </v-alert>
-    </div>
+    <title-icon :title="'Upcoming'" />
   </div>
 </template>
 
@@ -20,9 +9,10 @@
 import { mapState } from "vuex"
 
 import Header from "../../components/Header"
+import TitleIcon from "../../components/TitleIcon"
 
 export default {
-  components: { Header },
+  components: { Header, TitleIcon },
   data: () => ({
     bottomNav: "Next",
     recentLaunchDate: "",

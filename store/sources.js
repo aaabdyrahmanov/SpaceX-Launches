@@ -6,8 +6,8 @@ export const state = () => ({
   nextSpaceX: ""
 })
 export const mutations = {
-  SET_LAUNCHES_SPACEX(state, spaceXs) {
-    state.launchedRockets = spaceXs
+  SET_LAUNCHES_SPACEX(state, launchedRockets) {
+    state.launchedRockets = launchedRockets
   },
   SET_LATEST_SPACEX(state, spaceX) {
     state.latestSpaceX = spaceX
@@ -46,6 +46,28 @@ export const actions = {
   }
 }
 export const getters = {
+  launchedRocketsData: state => {
+    if (state.launchedRockets) {
+      const rocketIcon = state.launchedRockets.map(
+        rocket => rocket.links.mission_patch_small
+      )
+      const rocketNationality = state.launchedRockets.map(
+        rocket => rocket.rocket.second_stage.payloads[0].nationality
+      )
+      const missionName = state.launchedRockets.map(
+        rocket => rocket.mission_name
+      )
+      const launchSuccess = state.launchedRockets.map(
+        rocket => rocket.launch_success
+      )
+      const launchDate = state.launchedRockets.map(
+        rocket => rocket.launch_date_utc
+      )
+      // eslint-disable-next-line no-console
+      console.log(launchDate)
+      return { missionName, rocketIcon, rocketNationality, launchSuccess }
+    }
+  },
   nextLaunchDate: state => {
     return state.nextSpaceX.launch_date_utc
   }

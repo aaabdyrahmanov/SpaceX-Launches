@@ -30,12 +30,12 @@
     </div>
     <div class="click_options mx-auto mt-6">
       <nuxt-link :to="'/launches/upcoming'">
-        <v-btn class="ma-2" outlined round color="indigo">
+        <v-btn class="ma-2" outlined rounded color="indigo">
           Click to See Upcoming Launches
         </v-btn>
       </nuxt-link>
       <nuxt-link :to="'/launches/past'">
-        <v-btn class="ma-2" outlined round color="indigo">
+        <v-btn class="ma-2" outlined rounded color="indigo">
           Click to See Past Launches
         </v-btn></nuxt-link
       >
@@ -92,7 +92,6 @@ export default {
   async fetch({ store }) {
     await store.dispatch("sources/getLatestSpaceX")
     await store.dispatch("sources/getNextSpaceX")
-    await store.dispatch("sources/getLaunchesSpaceX")
   },
   mounted() {
     this.parseDate()

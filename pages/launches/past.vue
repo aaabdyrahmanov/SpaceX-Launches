@@ -1,35 +1,30 @@
 <template>
   <div>
     <Header />
-    <div class="title-icon">
-      <v-alert
-        color="rgb(87, 99, 102)"
-        elevation="20"
-        class="mt-8"
-        dark
-        icon="mdi-firework"
-        dense
-      >
-        <span class="font-italic font-weight-thin">Past</span>
-      </v-alert>
+    <title-icon :title="'Past'" />
+    <div v-if="launchedRocketsData">
+      <Timeline :data="launchedRocketsData" />
     </div>
   </div>
 </template>
 <script>
-import { mapState } from "vuex"
+import { mapState, mapGetters } from "vuex"
 
 import Header from "../../components/Header"
+import TitleIcon from "../../components/TitleIcon"
+import Timeline from "../../components/Timeline"
+
 export default {
-  components: { Header },
+  components: { Header, TitleIcon, Timeline },
   data: () => ({
-    bottomNav: "Next",
-    recentLaunchDate: "",
-    remainingTime: []
+    allRockets: 32
   }),
   computed: {
     ...mapState({
-      latestSpaceX: state => state.sources.latestSpaceX,
-      nextSpaceX: state => state.sources.nextSpaceX
+      launchedRockets: state => state.sources.launchedRockets
+    }),
+    ...mapGetters({
+      launchedRocketsData: "sources/launchedRocketsData"
     })
   },
   async fetch({ store }) {
@@ -37,12 +32,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.title-icon {
-  width: 130px;
-  letter-spacing: 5px;
-  margin-left: 47%;
-  transform: rotate(-7deg);
-}
-</style>
