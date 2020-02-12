@@ -48,6 +48,9 @@ export const actions = {
 export const getters = {
   launchedRocketsData: state => {
     if (state.launchedRockets) {
+      const flightNumber = state.launchedRockets.map(
+        rocket => rocket.flight_number
+      )
       const rocketIcon = state.launchedRockets.map(
         rocket => rocket.links.mission_patch_small
       )
@@ -65,7 +68,22 @@ export const getters = {
       )
       // eslint-disable-next-line no-console
       console.log(launchDate)
-      return { missionName, rocketIcon, rocketNationality, launchSuccess }
+      const launchDetails = state.launchedRockets.map(rocket => rocket.details)
+      const arrayData = []
+      for (let i = 0; i < flightNumber.length; i++) {
+        const objectData = {
+          flightNumber: flightNumber[i],
+          launchDetail: launchDetails[i],
+          missionName: missionName[i],
+          rocketIcon: rocketIcon[i],
+          rocketNationality: rocketNationality[i],
+          launchSuccess: launchSuccess[i]
+        }
+        arrayData.push(objectData)
+      }
+      // eslint-disable-next-line no-console
+      console.log(arrayData)
+      return arrayData
     }
   },
   nextLaunchDate: state => {

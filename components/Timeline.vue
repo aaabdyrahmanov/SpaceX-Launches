@@ -1,38 +1,42 @@
 <template>
   <div>
-    <v-timeline class="pl-2 pr-2">
-      <v-timeline-item
-        v-for="(mission, index) in data.missionName.length"
-        :key="index"
-        large
-      >
+    <v-timeline class="container">
+      <v-timeline-item v-for="(info, index) in data" :key="index">
         <template v-slot:icon>
           <v-avatar>
-            <img :src="data.rocketIcon[index]" />
+            <img :src="info.rocketIcon" class="rocket-icon" />
           </v-avatar>
         </template>
         <template v-slot:opposite>
-          <span>{{ data.rocketNationality[index] }}</span>
+          <span>{{ info.rocketNationality }}</span>
         </template>
         <v-card class="elevation-2">
           <v-card-title class="headline">
+            <div class="flight-number">
+              {{ info.flightNumber }}
+            </div>
             <div class="mission-name">
-              {{ data.missionName[index] }}
+              {{ info.missionName }}
             </div>
             |
-            <div v-if="data.launchSuccess[index] === true" class="success-msg">
+            <div v-if="info.launchSuccess === true" class="success-msg">
               <i class="fa fa-check"></i>
             </div>
             <div v-else class="error-msg">
               <i class="fa fa-times-circle"></i>
             </div>
           </v-card-title>
-          <v-card-text
-            >Lorem ipsum dolor sit amet, no nam oblique veritus. Commune
-            scaevola imperdiet nec ut, sed euismod convenire principes at. Est
-            et nobis iisque percipit, an vim zril disputando voluptatibus, vix
-            an salutandi sententiae.</v-card-text
-          >
+          <div v-if="info.launchDetail !== null">
+            <v-card-text>
+              <read-more
+                :text="info.launchDetail"
+                :max-chars="80"
+                more-str="read more"
+                link="#"
+                less-str="read less"
+              ></read-more>
+            </v-card-text>
+          </div>
         </v-card>
       </v-timeline-item>
     </v-timeline>
@@ -44,7 +48,7 @@ export default {
   name: "Timeline",
   props: {
     data: {
-      type: Object,
+      type: Array,
       required: true
     }
   }
@@ -53,6 +57,16 @@ export default {
 
 <style scoped>
 @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css");
+
+.flight-number {
+  color: gray;
+  margin-right: 1%;
+}
+
+.rocket-icon:hover {
+  width: 180%;
+  height: 180%;
+}
 
 .mission-name {
   margin-right: 1.8%;

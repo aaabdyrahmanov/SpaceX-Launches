@@ -2,7 +2,7 @@
   <div id="app">
     <v-app id="inspire">
       <nuxt />
-      <v-footer fixed class="text-center">
+      <v-footer class="text-center mt-5">
         <v-spacer>
           Developed by Atamyrat Abdyrahmanov
         </v-spacer>

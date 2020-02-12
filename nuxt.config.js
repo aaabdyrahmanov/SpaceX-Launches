@@ -18,7 +18,7 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/spaceX_logo.ico" }]
   },
   loading: { color: "#fff" },
-  plugins: [],
+  plugins: ["~/plugins/vue-readmore"],
   buildModules: ["@nuxtjs/eslint-module", "@nuxtjs/vuetify"],
   modules: ["@nuxtjs/axios"],
   axios: {},
