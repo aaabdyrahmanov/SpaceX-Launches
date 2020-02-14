@@ -29,17 +29,18 @@
       ></base-latest>
     </div>
     <div class="click_options mx-auto mt-6">
-      <nuxt-link :to="'/launches/upcoming'">
-        <v-btn class="ma-2" outlined rounded color="indigo">
-          Click to See Upcoming Launches
-        </v-btn>
-      </nuxt-link>
       <nuxt-link :to="'/launches/past'">
         <v-btn class="ma-2" outlined rounded color="indigo">
           Click to See Past Launches
         </v-btn></nuxt-link
       >
+      <nuxt-link :to="'/launches/upcoming'">
+        <v-btn class="ma-2" outlined rounded color="indigo">
+          Click to See Upcoming Launches
+        </v-btn>
+      </nuxt-link>
     </div>
+    <Footer fixed />
   </div>
 </template>
 
@@ -52,12 +53,14 @@ import "moment-duration-format"
 import BaseLatest from "@/components/BaseLatest"
 import BaseNext from "@/components/BaseNext"
 import Header from "@/components/Header"
+import Footer from "@/components/Footer"
 
 export default {
   components: {
     Header,
     BaseNext,
-    BaseLatest
+    BaseLatest,
+    Footer
   },
   data: () => ({
     bottomNav: "Next",

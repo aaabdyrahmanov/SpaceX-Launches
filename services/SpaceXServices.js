@@ -18,8 +18,12 @@ export default {
     const response = await api.get("/latest")
     return response.data
   },
-  async launchesSpaceX() {
+  async launchesSpaceXs() {
     const response = await api.get()
+    return response.data
+  },
+  async upcomingSpaceXs() {
+    const response = await api.get("/upcoming")
     return response.data
   }
 }

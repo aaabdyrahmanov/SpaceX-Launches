@@ -1,31 +1,30 @@
 <template>
-  <div>
+  <div class="mb-6">
     <Header />
     <title-icon :title="'Upcoming'" />
+    <Pagination :data="upcomingRocketsData"></Pagination>
+    <Footer />
   </div>
 </template>
 
 <script>
-import { mapState } from "vuex"
+import { mapGetters } from "vuex"
 
 import Header from "../../components/Header"
 import TitleIcon from "../../components/TitleIcon"
+import Pagination from "../../components/Pagination"
+import Footer from "../../components/Footer"
 
 export default {
-  components: { Header, TitleIcon },
-  data: () => ({
-    bottomNav: "Next",
-    recentLaunchDate: "",
-    remainingTime: []
-  }),
+  components: { Header, TitleIcon, Pagination, Footer },
+
   computed: {
-    ...mapState({
-      latestSpaceX: state => state.sources.latestSpaceX,
-      nextSpaceX: state => state.sources.nextSpaceX
+    ...mapGetters({
+      upcomingRocketsData: "sources/upcomingRocketsData"
     })
   },
   async fetch({ store }) {
-    await store.dispatch("sources/getLaunchesSpaceX")
+    await store.dispatch("sources/getUpcomingSpaceX")
   }
 }
 </script>

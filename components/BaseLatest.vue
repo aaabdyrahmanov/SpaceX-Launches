@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <v-card raised outlined class="mt-4">
+    <v-card raised outlined class="mt-4 elevation-18">
       <ul class="content_info pa-3">
         <li>
           <ul class="content_list pa-4">

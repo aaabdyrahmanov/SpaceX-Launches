@@ -10,7 +10,7 @@
         <template v-slot:opposite>
           <span>{{ info.rocketNationality }}</span>
         </template>
-        <v-card class="elevation-2">
+        <v-card class="elevation-17">
           <v-card-title class="headline">
             <div class="flight-number">
               {{ info.flightNumber }}
