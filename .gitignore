@@ -1,13 +1,10 @@
+# Nuxt
 .nuxt
 
+# Dependency directories
 node_modules/
 
+# Nuxt buıld
 dist
 
-.cache/
 
-dist/
-
-.env
-
-.vscode/ 

@@ -1,6 +1,6 @@
 # SpaceX-Launches
 SpaceX-Launches is an online platform for getting information on recent and upcoming launches of SpaceX.
-> Project Link: [xenodochial-varahamihira-243927.netlify.com](https://xenodochial-varahamihira-243927.netlify.com)
+> Project Link: [elastic-villani-1cca85.netlify.com](https://elastic-villani-1cca85.netlify.com/)
 
 ------------------
 
