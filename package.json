@@ -1,9 +1,8 @@
 {
-  "name": "SpaceX_Launches",
+  "name": "spacex_launches",
   "version": "1.0.0",
   "description": "Recent and next launches of SpaceX",
   "author": "atamyratabdy",
-  "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",
