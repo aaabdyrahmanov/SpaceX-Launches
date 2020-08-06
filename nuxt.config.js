@@ -15,7 +15,7 @@ export default {
         content: process.env.npm_package_description || ""
       }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/spaceX_logo.ico" }]
+    link: [{ rel: "icon", type: "image/x-icon", href: "SpaceX_logo.ico" }]
   },
   loading: { color: "#fff" },
   plugins: ["~/plugins/vue-readmore"],
