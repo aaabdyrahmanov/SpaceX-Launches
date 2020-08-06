@@ -1,7 +1,7 @@
 <template>
   <div class="wrap">
     <div class="logo mb">
-      <img src="../assets/img/404.png" alt="Page not Found" />
+      <img src="404.png" alt="Page not Found" />
       <p>
         <nuxt-link to="/" class="btn">Go back to Home</nuxt-link>
       </p>
