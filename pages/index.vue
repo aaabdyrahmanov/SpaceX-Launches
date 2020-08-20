@@ -99,9 +99,12 @@ export default {
   mounted() {
     this.parseDate()
   },
+  beforeDestroy() {
+    this.stopInterval()
+  },
   methods: {
     parseDate() {
-      setInterval(() => {
+      return setInterval(() => {
         const x = new Moment(this.nextLaunchDate)
         const y = new Moment(new Date())
         const milliSeconds = Moment.duration(x.diff(y), "milliseconds")
@@ -111,6 +114,9 @@ export default {
         const resultDate = formatted.split(" ")
         this.remainingTime = resultDate.reverse()
       }, 1000)
+    },
+    stopInterval() {
+      clearInterval(this.parseDate());
     },
     getTimePrevious() {
       if (this.latestSpaceX) {
