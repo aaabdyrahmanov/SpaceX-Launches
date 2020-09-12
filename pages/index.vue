@@ -28,15 +28,15 @@
         :data="latestSpaceX"
       ></base-latest>
     </div>
-    <div class="click_options mx-auto mt-6">
+    <div class="detail_option mx-auto mt-6">
       <nuxt-link :to="'/launches/past'">
         <v-btn class="ma-2" outlined rounded color="indigo">
-          Click to See Past Launches
+          Past Launches
         </v-btn></nuxt-link
       >
       <nuxt-link :to="'/launches/upcoming'">
         <v-btn class="ma-2" outlined rounded color="indigo">
-          Click to See Upcoming Launches
+          Upcoming Launches
         </v-btn>
       </nuxt-link>
     </div>
@@ -138,12 +138,12 @@ export default {
 </script>
 
 <style scoped>
-.click_options {
+.detail_option {
   display: flex;
   flex-direction: row;
 }
 @media (max-width: 639px) {
-  .click_options {
+  .detail_option {
     display: flex;
     text-align: center;
     flex-direction: column;
