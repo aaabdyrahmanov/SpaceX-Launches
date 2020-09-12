@@ -12,10 +12,10 @@
 <script>
 import { mapGetters } from "vuex"
 
-import Header from "../../components/Header"
-import TitleIcon from "../../components/TitleIcon"
-import Pagination from "../../components/Pagination"
-import Footer from "../../components/Footer"
+import Header from "@/components/Header"
+import TitleIcon from "@/components/TitleIcon"
+import Pagination from "@/components/Pagination"
+import Footer from "@/components/Footer"
 
 export default {
   components: { Header, TitleIcon, Pagination, Footer },
