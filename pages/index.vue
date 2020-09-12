@@ -141,12 +141,6 @@ export default {
 .detail_option {
   display: flex;
   flex-direction: row;
-}
-@media (max-width: 639px) {
-  .detail_option {
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-  }
+  justify-content: space-evenly;
 }
 </style>
