@@ -116,7 +116,7 @@ export default {
       }, 1000)
     },
     stopInterval() {
-      clearInterval(this.parseDate());
+      clearInterval(this.parseDate())
     },
     getTimePrevious() {
       if (this.latestSpaceX) {
