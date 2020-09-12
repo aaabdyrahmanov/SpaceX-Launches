@@ -3,7 +3,6 @@
     <Header />
     <title-icon :title="'Upcoming'" />
     <Pagination :data="upcomingRocketsData"></Pagination>
-    <Footer />
   </div>
 </template>
 
@@ -13,10 +12,9 @@ import { mapGetters } from "vuex"
 import Header from "@/components/Header"
 import TitleIcon from "@/components/TitleIcon"
 import Pagination from "@/components/Pagination"
-import Footer from "@/components/Footer"
 
 export default {
-  components: { Header, TitleIcon, Pagination, Footer },
+  components: { Header, TitleIcon, Pagination },
 
   computed: {
     ...mapGetters({

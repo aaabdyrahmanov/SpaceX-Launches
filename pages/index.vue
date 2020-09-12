@@ -40,7 +40,6 @@
         </v-btn>
       </nuxt-link>
     </div>
-    <Footer fixed />
   </div>
 </template>
 
@@ -53,14 +52,12 @@ import "moment-duration-format"
 import BaseLatest from "@/components/BaseLatest"
 import BaseNext from "@/components/BaseNext"
 import Header from "@/components/Header"
-import Footer from "@/components/Footer"
 
 export default {
   components: {
     Header,
     BaseNext,
-    BaseLatest,
-    Footer
+    BaseLatest
   },
   data: () => ({
     bottomNav: "Next",

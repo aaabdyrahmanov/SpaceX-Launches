@@ -5,7 +5,6 @@
     <div v-if="launchedRocketsData">
       <Pagination :data="launchedRocketsData"></Pagination>
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -15,10 +14,9 @@ import { mapGetters } from "vuex"
 import Header from "@/components/Header"
 import TitleIcon from "@/components/TitleIcon"
 import Pagination from "@/components/Pagination"
-import Footer from "@/components/Footer"
 
 export default {
-  components: { Header, TitleIcon, Pagination, Footer },
+  components: { Header, TitleIcon, Pagination },
   data() {
     return {
       pageNumber: 1,
