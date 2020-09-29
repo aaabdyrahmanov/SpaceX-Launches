@@ -4,7 +4,7 @@
       <v-timeline-item v-for="(info, index) in data" :key="index">
         <template v-slot:icon>
           <v-avatar>
-            <img :src="info.rocketIcon" class="rocket-icon" />
+            <img :src="info.rocketIcon" class="rocket-icon">
           </v-avatar>
         </template>
         <template v-slot:opposite>
@@ -20,10 +20,10 @@
             </div>
             |
             <div v-if="info.launchSuccess === true" class="success-msg">
-              <i class="fa fa-check"></i>
+              <i class="fa fa-check" />
             </div>
             <div v-else class="error-msg">
-              <i class="fa fa-times-circle"></i>
+              <i class="fa fa-times-circle" />
             </div>
           </v-card-title>
           <div v-if="info.launchDetail !== null">
@@ -34,7 +34,7 @@
                 more-str="read more"
                 link="#"
                 less-str="read less"
-              ></read-more>
+              />
             </v-card-text>
           </div>
         </v-card>
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  name: "Timeline",
+  name: 'Timeline',
   props: {
     data: {
       type: Array,

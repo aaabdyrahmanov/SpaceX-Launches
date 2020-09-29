@@ -1,66 +1,66 @@
-import SpaceXServices from "@/services/SpaceXServices.js"
+import SpaceXServices from '@/services/SpaceXServices.js'
 
 export const state = () => ({
-  launchedRockets: "",
-  upcomingRockets: "",
-  latestSpaceX: "",
-  nextSpaceX: ""
+  launchedRockets: '',
+  upcomingRockets: '',
+  latestSpaceX: '',
+  nextSpaceX: ''
 })
 export const mutations = {
-  SET_LAUNCHES_SPACEXS(state, launchedRockets) {
+  SET_LAUNCHES_SPACEXS (state, launchedRockets) {
     state.launchedRockets = launchedRockets
   },
-  SET_UPCOMING_SPACEXS(state, upcomingRockets) {
+  SET_UPCOMING_SPACEXS (state, upcomingRockets) {
     state.upcomingRockets = upcomingRockets
   },
-  SET_LATEST_SPACEX(state, spaceX) {
+  SET_LATEST_SPACEX (state, spaceX) {
     state.latestSpaceX = spaceX
   },
-  SET_NEXT_SPACEX(state, spaceX) {
+  SET_NEXT_SPACEX (state, spaceX) {
     state.nextSpaceX = spaceX
   }
 }
 export const actions = {
-  getLatestSpaceX({ commit }) {
+  getLatestSpaceX ({ commit }) {
     SpaceXServices.latestSpaceX()
-      .then(response => {
-        commit("SET_LATEST_SPACEX", response)
+      .then((response) => {
+        commit('SET_LATEST_SPACEX', response)
       })
-      .catch(error => {
-        alert("There was an error:", error.response)
+      .catch((error) => {
+        alert('There was an error:', error.response)
       })
   },
-  getNextSpaceX({ commit }) {
+  getNextSpaceX ({ commit }) {
     SpaceXServices.nextSpaceX()
-      .then(response => {
-        commit("SET_NEXT_SPACEX", response)
+      .then((response) => {
+        commit('SET_NEXT_SPACEX', response)
       })
-      .catch(error => {
-        alert("There was an error:", error.response)
+      .catch((error) => {
+        alert('There was an error:', error.response)
       })
   },
-  getLaunchesSpaceX({ commit }) {
+  getLaunchesSpaceX ({ commit }) {
     SpaceXServices.launchesSpaceXs()
-      .then(response => {
-        commit("SET_LAUNCHES_SPACEXS", response)
+      .then((response) => {
+        commit('SET_LAUNCHES_SPACEXS', response)
       })
-      .catch(error => {
-        alert("There was an error", error.response)
+      .catch((error) => {
+        alert('There was an error', error.response)
       })
   },
 
-  getUpcomingSpaceX({ commit }) {
+  getUpcomingSpaceX ({ commit }) {
     SpaceXServices.upcomingSpaceXs()
-      .then(response => {
-        commit("SET_UPCOMING_SPACEXS", response)
+      .then((response) => {
+        commit('SET_UPCOMING_SPACEXS', response)
       })
-      .catch(error => {
-        alert("There was an error", error.response)
+      .catch((error) => {
+        alert('There was an error', error.response)
       })
   }
 }
 export const getters = {
-  launchedRocketsData: state => {
+  launchedRocketsData: (state) => {
     if (state.launchedRockets) {
       const flightNumber = state.launchedRockets.map(
         rocket => rocket.flight_number
@@ -97,10 +97,10 @@ export const getters = {
       return arrayData
     }
   },
-  nextLaunchDate: state => {
+  nextLaunchDate: (state) => {
     return state.nextSpaceX.launch_date_utc
   },
-  upcomingRocketsData: state => {
+  upcomingRocketsData: (state) => {
     if (state.upcomingRockets) {
       const flightNumber = state.upcomingRockets.map(
         rocket => rocket.flight_number
