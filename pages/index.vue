@@ -3,15 +3,26 @@
     <Header />
     <v-row class="mt-6">
       <v-col>
-        <v-bottom-navigation v-model="bottomNav" width="180px" class="mx-auto">
+        <v-bottom-navigation 
+          v-model="bottomNav" 
+          width="180px" 
+          class="mx-auto"
+        >
           <v-btn value="Next">
-            <v-card-text v-mutate="() => onMutate('Next')">
-              <span>Next</span>
+            <v-card-text 
+              v-mutate="() => onMutate('Next')"
+            >
+              <span>Next </span>
             </v-card-text>
           </v-btn>
-          <v-btn @click="executePast()" value="Past">
-            <v-card-text v-mutate="() => onMutate('Past')">
-              <span>Past</span>
+          <v-btn 
+            value="Past" 
+            @click="executePast()"
+          >
+            <v-card-text 
+              v-mutate="()=> onMutate('Past')"
+            >
+              <span> Past </span>
             </v-card-text>
           </v-btn>
         </v-bottom-navigation>
@@ -19,23 +30,36 @@
     </v-row>
     <div v-if="bottomNavBoolean">
       <div v-if="nextSpaceX">
-        <base-next :data="nextSpaceX" :duration="remainingTime"></base-next>
+        <base-next 
+          :data="nextSpaceX" 
+          :duration="remainingTime" 
+        />
       </div>
     </div>
     <div v-else>
       <base-latest
         :duration="recentLaunchDate"
         :data="latestSpaceX"
-      ></base-latest>
+      />
     </div>
     <div class="detail_option mx-auto mt-6">
       <nuxt-link :to="'/launches/past'">
-        <v-btn class="ma-2" outlined rounded color="indigo">
+        <v-btn 
+          class="ma-2" 
+          outlined 
+          rounded 
+          color="indigo"
+        >
           Past Launches
-        </v-btn></nuxt-link
-      >
+        </v-btn>
+      </nuxt-link>
       <nuxt-link :to="'/launches/upcoming'">
-        <v-btn class="ma-2" outlined rounded color="indigo">
+        <v-btn 
+          class="ma-2" 
+          outlined
+          rounded 
+          color="indigo"
+        >
           Upcoming Launches
         </v-btn>
       </nuxt-link>
@@ -44,14 +68,14 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex"
+import { mapState, mapGetters } from 'vuex'
 
-import Moment from "moment/moment"
-import "moment-duration-format"
+import Moment from 'moment/moment'
+import 'moment-duration-format'
 
-import BaseLatest from "@/components/BaseLatest"
-import BaseNext from "@/components/BaseNext"
-import Header from "@/components/Header"
+import BaseLatest from '@/components/BaseLatest'
+import BaseNext from '@/components/BaseNext'
+import Header from '@/components/Header'
 
 export default {
   components: {
@@ -59,20 +83,14 @@ export default {
     BaseNext,
     BaseLatest
   },
+  async fetch ({ store }) {
+    await store.dispatch('sources/getLatestSpaceX')
+    await store.dispatch('sources/getNextSpaceX')
+  },
   data: () => ({
-    bottomNav: "Next",
-    recentLaunchDate: "",
+    bottomNav: 'Next',
+    recentLaunchDate: '',
     remainingTime: []
-  }),
-  head: () => ({
-    title: "SpaceX Launches",
-    meta: [
-      {
-        hid: `description`,
-        name: "description",
-        content: "Recent and upcoming launches of SpaceX"
-      }
-    ]
   }),
   computed: {
     ...mapState({
@@ -80,57 +98,63 @@ export default {
       nextSpaceX: state => state.sources.nextSpaceX
     }),
     ...mapGetters({
-      nextLaunchDate: "sources/nextLaunchDate"
+      nextLaunchDate: 'sources/nextLaunchDate'
     }),
-    bottomNavBoolean() {
-      if (this.bottomNav === "Next") {
+    bottomNavBoolean () {
+      if (this.bottomNav === 'Next') {
         return true
       }
       return false
     }
   },
-  async fetch({ store }) {
-    await store.dispatch("sources/getLatestSpaceX")
-    await store.dispatch("sources/getNextSpaceX")
-  },
-  mounted() {
+  mounted () {
     this.parseDate()
   },
-  beforeDestroy() {
+  beforeDestroy () {
     this.stopInterval()
   },
   methods: {
-    parseDate() {
+    parseDate () {
       return setInterval(() => {
         const x = new Moment(this.nextLaunchDate)
         const y = new Moment(new Date())
-        const milliSeconds = Moment.duration(x.diff(y), "milliseconds")
-        const formatted = Moment.duration(milliSeconds, "hours").format(
-          "D H mm ss"
+        const milliSeconds = Moment.duration(x.diff(y), 'milliseconds')
+        const formatted = Moment.duration(milliSeconds, 'hours').format(
+          'D H mm ss'
         )
-        const resultDate = formatted.split(" ")
+        const resultDate = formatted.split(' ')
         this.remainingTime = resultDate.reverse()
       }, 1000)
     },
-    stopInterval() {
+    stopInterval () {
       clearInterval(this.parseDate())
     },
-    getTimePrevious() {
+    getTimePrevious () {
       if (this.latestSpaceX) {
         const s = this.latestSpaceX.launch_date_utc
         const a = Moment(s)
-        this.recentLaunchDate = a.format("Do MMM YYYY, HH:mm:ss (UTCZ)")
+        this.recentLaunchDate = a.format('Do MMM YYYY, HH:mm:ss (UTCZ)')
       }
     },
-    executePast() {
+    executePast () {
       if (!this.recentLaunchDate) {
         this.getTimePrevious()
       }
     },
-    onMutate(value) {
+    onMutate (value) {
       this.bottomNav = value
     }
-  }
+  },
+  head: () => ({
+    title: 'SpaceX Launches',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Recent and upcoming launches of SpaceX'
+      }
+    ]
+  })
 }
 </script>
 

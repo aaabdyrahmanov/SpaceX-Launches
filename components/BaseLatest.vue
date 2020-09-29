@@ -29,7 +29,7 @@
 
 <script>
 export default {
-  name: "BaseLatest",
+  name: 'BaseLatest',
   props: {
     data: {
       type: Object,

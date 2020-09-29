@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: "TitleIcon",
+  name: 'TitleIcon',
   props: {
     title: {
       type: String,

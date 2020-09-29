@@ -1,9 +1,11 @@
 <template>
   <div class="wrap">
     <div class="logo mb">
-      <img src="404.png" alt="Page not Found" />
+      <img src="404.png" alt="Page not Found">
       <p>
-        <nuxt-link to="/" class="btn">Go back to Home</nuxt-link>
+        <nuxt-link to="/" class="btn">
+          Go back to Home
+        </nuxt-link>
       </p>
     </div>
   </div>
@@ -17,17 +19,17 @@ export default {
       default: null
     }
   },
-  head() {
-    return {
-      title: this.message
-    }
-  },
   computed: {
-    statusCode() {
+    statusCode () {
       return (this.error && this.error.statusCode) || 500
     },
-    message() {
+    message () {
       return this.error.message
+    }
+  },
+  head () {
+    return {
+      title: this.message
     }
   }
 }

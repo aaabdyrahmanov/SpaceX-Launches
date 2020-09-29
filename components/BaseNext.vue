@@ -14,8 +14,12 @@
         </li>
         <li class="ma-auto pt-6">
           <ul class="content_timer pa-0 ma-auto">
-            <li v-if="duration[0] !== '0'">Will be launched</li>
-            <li v-else>Launched</li>
+            <li v-if="duration[0] !== '0'">
+              Will be launched
+            </li>
+            <li v-else>
+              Launched
+            </li>
             <li
               v-if="duration[0] !== '0'"
               class="content_timer_duration ma-auto"
@@ -25,7 +29,9 @@
                 :key="index"
                 class="content_timer_n ma-auto"
               >
-                <li class="pt-2">{{ time }}</li>
+                <li class="pt-2">
+                  {{ time }}
+                </li>
                 <li>{{ names[index] }}</li>
               </ul>
             </li>
@@ -38,7 +44,7 @@
 
 <script>
 export default {
-  name: "BaseNext",
+  name: 'BaseNext',
   props: {
     data: {
       type: Object,
@@ -50,7 +56,7 @@ export default {
     }
   },
   data: () => ({
-    names: ["Seconds", "Minutes", "Hours", "Days"]
+    names: ['Seconds', 'Minutes', 'Hours', 'Days']
   })
 }
 </script>

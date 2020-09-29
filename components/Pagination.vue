@@ -9,12 +9,12 @@
       class="mt-5 mb-6"
       prev-icon="mdi-menu-left"
       next-icon="mdi-menu-right"
-    ></v-pagination>
+    />
   </div>
 </template>
 
 <script>
-import Timeline from "./Timeline"
+import Timeline from './Timeline'
 
 export default {
   components: {
@@ -26,7 +26,7 @@ export default {
       required: true
     }
   },
-  data() {
+  data () {
     return {
       pageNumber: 1,
       size: 10
@@ -34,14 +34,14 @@ export default {
   },
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
-    pageCount() {
+    pageCount () {
       if (this.data) {
         const l = this.data.length
         const s = this.size
         return Math.ceil(l / s)
       }
     },
-    paginatedData() {
+    paginatedData () {
       const start = (this.pageNumber - 1) * this.size
       const end = start + this.size
       return this.data.slice(start, end)
