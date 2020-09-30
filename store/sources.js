@@ -1,5 +1,3 @@
-import SpaceXServices from '@/services/SpaceXServices.js'
-
 export const state = () => ({
   launchedRockets: '',
   upcomingRockets: '',
@@ -21,42 +19,37 @@ export const mutations = {
   }
 }
 export const actions = {
-  getLatestSpaceX ({ commit }) {
-    SpaceXServices.latestSpaceX()
-      .then((response) => {
-        commit('SET_LATEST_SPACEX', response)
-      })
-      .catch((error) => {
-        alert('There was an error:', error.response)
-      })
+  async getLatestSpaceX ({ commit }) {
+    try {
+      const response = await this.$axios.get('/latest')
+      commit('SET_LATEST_SPACEX', response)
+    } catch (error) {
+      console.error(error)
+    }
   },
-  getNextSpaceX ({ commit }) {
-    SpaceXServices.nextSpaceX()
-      .then((response) => {
-        commit('SET_NEXT_SPACEX', response)
-      })
-      .catch((error) => {
-        alert('There was an error:', error.response)
-      })
+  async getNextSpaceX ({ commit }) {
+    try {
+      const response = await this.$axios.get('/next')
+      commit('SET_NEXT_SPACEX', response)
+    } catch (error) {
+      console.error(error)
+    }
   },
-  getLaunchesSpaceX ({ commit }) {
-    SpaceXServices.launchesSpaceXs()
-      .then((response) => {
-        commit('SET_LAUNCHES_SPACEXS', response)
-      })
-      .catch((error) => {
-        alert('There was an error', error.response)
-      })
+  async getLaunchesSpaceX ({ commit }) {
+    try {
+      const response = await this.$axios.get('/')
+      commit('SET_LAUNCHES_SPACEXS', response)
+    } catch (error) {
+      console.error(error)
+    }
   },
-
-  getUpcomingSpaceX ({ commit }) {
-    SpaceXServices.upcomingSpaceXs()
-      .then((response) => {
-        commit('SET_UPCOMING_SPACEXS', response)
-      })
-      .catch((error) => {
-        alert('There was an error', error.response)
-      })
+  async getUpcomingSpaceX ({ commit }) {
+    try {
+      const response = await this.$axios.get('/upcoming')
+      commit('SET_UPCOMING_SPACEXS', response)
+    } catch (error) {
+      console.error(error)
+    }
   }
 }
 export const getters = {
