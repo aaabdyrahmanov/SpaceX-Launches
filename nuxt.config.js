@@ -1,5 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
+const isDebugMode = process.env.NODE_ENV != 'production'
+
 export default {
   mode: 'spa',
   htmlAttrs: {
@@ -21,7 +23,14 @@ export default {
   plugins: ['~/plugins/vue-readmore'],
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
   modules: ['@nuxtjs/axios'],
-  axios: {},
+  axios: {
+    debug: isDebugMode,
+    progress: false,
+    retry: {
+      retries: 3
+    },
+    baseURL: process.env.SERVER_ADDRESS
+  },
   vuetify: {
     theme: {
       dark: false,
