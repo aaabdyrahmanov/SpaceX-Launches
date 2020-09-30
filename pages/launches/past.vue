@@ -25,14 +25,14 @@ export default {
   components: {
     Header, TitleIcon, Pagination
   },
+  async fetch ({ store }) {
+    await store.dispatch('sources/getLaunchesSpaceX')
+  },
   data () {
     return {
       pageNumber: 1,
       size: 10
     }
-  },
-  async fetch ({ store }) {
-    await store.dispatch('sources/getLaunchesSpaceX')
   },
   computed: {
     ...mapGetters({

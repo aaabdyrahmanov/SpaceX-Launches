@@ -3,23 +3,23 @@
     <Header />
     <v-row class="mt-6">
       <v-col>
-        <v-bottom-navigation 
-          v-model="bottomNav" 
-          width="180px" 
+        <v-bottom-navigation
+          v-model="bottomNav"
+          width="180px"
           class="mx-auto"
         >
           <v-btn value="Next">
-            <v-card-text 
+            <v-card-text
               v-mutate="() => onMutate('Next')"
             >
               <span>Next </span>
             </v-card-text>
           </v-btn>
-          <v-btn 
-            value="Past" 
+          <v-btn
+            value="Past"
             @click="executePast()"
           >
-            <v-card-text 
+            <v-card-text
               v-mutate="()=> onMutate('Past')"
             >
               <span> Past </span>
@@ -30,9 +30,9 @@
     </v-row>
     <div v-if="bottomNavBoolean">
       <div v-if="nextSpaceX">
-        <base-next 
-          :data="nextSpaceX" 
-          :duration="remainingTime" 
+        <base-next
+          :data="nextSpaceX"
+          :duration="remainingTime"
         />
       </div>
     </div>
@@ -44,20 +44,20 @@
     </div>
     <div class="detail_option mx-auto mt-6">
       <nuxt-link :to="'/launches/past'">
-        <v-btn 
-          class="ma-2" 
-          outlined 
-          rounded 
+        <v-btn
+          class="ma-2"
+          outlined
+          rounded
           color="indigo"
         >
           Past Launches
         </v-btn>
       </nuxt-link>
       <nuxt-link :to="'/launches/upcoming'">
-        <v-btn 
-          class="ma-2" 
+        <v-btn
+          class="ma-2"
           outlined
-          rounded 
+          rounded
           color="indigo"
         >
           Upcoming Launches
