@@ -18,11 +18,11 @@ export default {
     Header, TitleIcon, Pagination
   },
   async fetch ({ store }) {
-    await store.dispatch('sources/getUpcomingSpaceX')
+    await store.dispatch('sources/fetchUpcoming')
   },
   computed: {
     ...mapGetters({
-      upcomingRocketsData: 'sources/upcomingRocketsData'
+      upcomingRocketsData: 'sources/getUpcomingData'
     })
   }
 }

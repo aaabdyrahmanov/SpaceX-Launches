@@ -5,55 +5,55 @@ export const state = () => ({
   nextSpaceX: ''
 })
 export const mutations = {
-  SET_LAUNCHES_SPACEXS (state, launchedRockets) {
+  setLaunched  (state, launchedRockets) {
     state.launchedRockets = launchedRockets
   },
-  SET_UPCOMING_SPACEXS (state, upcomingRockets) {
+  setUpcoming (state, upcomingRockets) {
     state.upcomingRockets = upcomingRockets
   },
-  SET_LATEST_SPACEX (state, spaceX) {
+  setLatest (state, spaceX) {
     state.latestSpaceX = spaceX
   },
-  SET_NEXT_SPACEX (state, spaceX) {
+  setNext (state, spaceX) {
     state.nextSpaceX = spaceX
   }
 }
 export const actions = {
-  async getLatestSpaceX ({ commit }) {
+  async fetchLatest ({ commit }) {
     try {
       const response = await this.$axios.get('/latest')
-      commit('SET_LATEST_SPACEX', response)
+      commit('setLatest', response)
     } catch (error) {
       console.error(error)
     }
   },
-  async getNextSpaceX ({ commit }) {
+  async fetchNext ({ commit }) {
     try {
       const response = await this.$axios.get('/next')
-      commit('SET_NEXT_SPACEX', response)
+      commit('setNext', response)
     } catch (error) {
       console.error(error)
     }
   },
-  async getLaunchesSpaceX ({ commit }) {
+  async fetchLaunched ({ commit }) {
     try {
       const response = await this.$axios.get('/')
-      commit('SET_LAUNCHES_SPACEXS', response)
+      commit('setLaunched', response)
     } catch (error) {
       console.error(error)
     }
   },
-  async getUpcomingSpaceX ({ commit }) {
+  async fetchUpcoming ({ commit }) {
     try {
       const response = await this.$axios.get('/upcoming')
-      commit('SET_UPCOMING_SPACEXS', response)
+      commit('setUpcoming', response)
     } catch (error) {
       console.error(error)
     }
   }
 }
 export const getters = {
-  launchedRocketsData: (state) => {
+  getLaunchedData: (state) => {
     if (state.launchedRockets) {
       const flightNumber = state.launchedRockets.map(
         rocket => rocket.flight_number
@@ -90,10 +90,10 @@ export const getters = {
       return arrayData
     }
   },
-  nextLaunchDate: (state) => {
+  getNextLaunchDate: (state) => {
     return state.nextSpaceX.launch_date_utc
   },
-  upcomingRocketsData: (state) => {
+  getUpcomingData: (state) => {
     if (state.upcomingRockets) {
       const flightNumber = state.upcomingRockets.map(
         rocket => rocket.flight_number

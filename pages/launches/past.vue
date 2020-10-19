@@ -26,7 +26,7 @@ export default {
     Header, TitleIcon, Pagination
   },
   async fetch ({ store }) {
-    await store.dispatch('sources/getLaunchesSpaceX')
+    await store.dispatch('sources/fetchLaunched')
   },
   data () {
     return {
@@ -36,7 +36,7 @@ export default {
   },
   computed: {
     ...mapGetters({
-      launchedRocketsData: 'sources/launchedRocketsData'
+      launchedRocketsData: 'sources/getLaunchedData'
     })
   }
 }

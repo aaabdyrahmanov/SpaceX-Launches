@@ -84,8 +84,8 @@ export default {
     BaseLatest
   },
   async fetch ({ store }) {
-    await store.dispatch('sources/getLatestSpaceX')
-    await store.dispatch('sources/getNextSpaceX')
+    await store.dispatch('sources/fetchLatest')
+    await store.dispatch('sources/fetchNext')
   },
   data: () => ({
     bottomNav: 'Next',
@@ -98,7 +98,7 @@ export default {
       nextSpaceX: state => state.sources.nextSpaceX
     }),
     ...mapGetters({
-      nextLaunchDate: 'sources/nextLaunchDate'
+      nextLaunchDate: 'sources/getNextLaunchDate'
     }),
     bottomNavBoolean () {
       if (this.bottomNav === 'Next') {
