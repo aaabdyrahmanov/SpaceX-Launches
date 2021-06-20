@@ -7,9 +7,7 @@
             <li class="display-2">
               <strong>{{ data.flight_number }}</strong>
             </li>
-            <li>{{ data.mission_name }}</li>
-            <li>{{ data.rocket.rocket_name }}</li>
-            <li>{{ data.launch_site.site_name }}</li>
+            <li>{{ data.name }}</li>
           </ul>
         </li>
         <li class="ma-auto pt-6">

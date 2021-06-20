@@ -1,45 +1,53 @@
 # SpaceX-Launches
 SpaceX-Launches is an online platform for getting information on recent and upcoming launches of SpaceX.
-> Project Link: [elastic-villani-1cca85.netlify.com](https://elastic-villani-1cca85.netlify.com/)
+> Project Link: [flamboyant-shaw-682e77.netlify.app](https://flamboyant-shaw-682e77.netlify.app/)
 
 ------------------
 
+## Getting Started
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+## Requirements
+- Package manager to install packages [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable)
+- Installed local [Node.js](https://nodejs.org/) environment
+
+Clone the repo in your environment
+
+```bash
+https://github.com/aaabdyrahmanov/SpaceX-Launches
+```
+
+## Setup environment variables
+Create a `.env` file in the root of the project and insert your key/value pairs in the following format of `KEY=VALUE`:
+
+#### `nano .env`
+```bash
+SERVER_ADDRESS=https://api.spacexdata.com/v4/launches
+HOST=0.0.0.0
+PORT=8080
+```
+
+## Project Setup
+To run this project, install it locally using npm:
+```bash
+# move into the project folder
+cd SpaceX-Launches
+
+# install dependencies
+yarn install
+
+# start developing the project
+yarn run dev
+
+# build the project
+yarn run build
+```
+------------------
 ## Technologies
-Project is created with:
+Project created with:
 * Nuxt.js version: 2.0.0
 * Moment.js version: 2.24.0
 * Vuetify version: 2.2.1
 ------------------
-
-## Development Process 
-> In initiation phase of this project, as much as possible, I decided to try new technologies which I didn't use before. Thus, I had faced with several challenges. For instance, the period of UI framework selection was a bit tedious. I have tried Kendo UI, AT UI and lastly I decided on using Vuetify. 
-
-> In deployment process, I had faced with the webpack errors related to nuxt-vuetify configuration issues. For this bug, I have started to project for 3 times from scratch.
-
-> Overall, development process was a bit challenging but much more fun for me.
-------------------
-
-## Personal Achievement
-I learnt a lot during the time I spent for developing this project. They can be listed as follows:
-
-* using moment.js on date and time related operations
-* getting benefit of several UI frameworks and get familiar with their common points
-* deploying the project to cloud and bring into use
-* strengthened the belief on success
-* an existence of solution for each problem
-------------------
-
-
-## Setup
-To run this project, install it locally using npm:
-
-```
-$ cd SpaceX-Launches
-$ npm install
-$ npm run dev
-```
-------------------
-
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+Distributed under the MIT License. See [`LICENSE`](https://github.com/aaabdyrahmanov/SpaceX-Launches/blob/master/LICENSE.md) for more information.

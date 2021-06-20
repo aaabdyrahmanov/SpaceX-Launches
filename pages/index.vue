@@ -75,7 +75,7 @@ import 'moment-duration-format'
 
 import BaseLatest from '@/components/BaseLatest'
 import BaseNext from '@/components/BaseNext'
-import Header from '@/components/Header'
+import Header from '@/components/Navigation/Header'
 
 export default {
   components: {
@@ -101,45 +101,31 @@ export default {
       nextLaunchDate: 'sources/getNextLaunchDate'
     }),
     bottomNavBoolean () {
-      if (this.bottomNav === 'Next') {
-        return true
-      }
-      return false
+      return this.bottomNav === 'Next'
     }
   },
   mounted () {
     this.parseDate()
   },
   beforeDestroy () {
-    this.stopInterval()
+    clearInterval(this.parseDate())
   },
   methods: {
     parseDate () {
       return setInterval(() => {
-        const x = new Moment(this.nextLaunchDate)
-        const y = new Moment(new Date())
-        const milliSeconds = Moment.duration(x.diff(y), 'milliseconds')
+        const nextLaunchDate = new Moment(this.nextLaunchDate)
+        const currentDate = new Moment(new Date())
+
+        const milliSeconds = Moment.duration(nextLaunchDate.diff(currentDate), 'milliseconds')
         const formatted = Moment.duration(milliSeconds, 'hours').format(
           'D H mm ss'
         )
-        const resultDate = formatted.split(' ')
-        this.remainingTime = resultDate.reverse()
+        this.remainingTime = formatted.split(' ').reverse()
       }, 1000)
     },
-    stopInterval () {
-      clearInterval(this.parseDate())
-    },
-    getTimePrevious () {
-      if (this.latestSpaceX) {
-        const s = this.latestSpaceX.launch_date_utc
-        const a = Moment(s)
-        this.recentLaunchDate = a.format('Do MMM YYYY, HH:mm:ss (UTCZ)')
-      }
-    },
     executePast () {
-      if (!this.recentLaunchDate) {
-        this.getTimePrevious()
-      }
+      const a = Moment(this.latestSpaceX.date_utc)
+      this.recentLaunchDate = a.format('Do MMM YYYY, HH:mm:ss (UTCZ)')
     },
     onMutate (value) {
       this.bottomNav = value
