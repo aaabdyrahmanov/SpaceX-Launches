@@ -1,13 +1,20 @@
 import colors from 'vuetify/es5/util/colors'
 
-const isDebugMode = process.env.NODE_ENV != 'production'
+// import environment variables
+require('dotenv').config()
+const isDebugMode = process.env.NODE_ENV !== 'production'
+const API_ADDRESS = process.env.SERVER_ADDRESS
 
 export default {
   mode: 'spa',
-  htmlAttrs: {
-    lang: 'en'
-  },
+  /*
+  ** Headers of the page
+  */
   head: {
+    htmlAttrs: {
+      lang: 'en'
+    },
+    title: 'SpaceX Launches',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -17,20 +24,56 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: 'SpaceX_logo.ico' }]
+    noscript: [{ innerHTML: 'This website requires JavaScript.' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '🚀' }]
+  // link: [{ rel: 'shortcut icon', type: 'image/png', href: '/favicon.png' }]
   },
-  loading: { color: '#fff' },
-  plugins: ['~/plugins/vue-readmore'],
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
-  modules: ['@nuxtjs/axios'],
+  /*
+  ** Customize the progress-bar color
+  */
+  loading: false,
+  manifest: {
+    name: 'SpaceX Launches',
+    short_name: 'SpaceX Launches',
+    description: 'Recent and upcoming launches of the SpaceX',
+    theme_color: '#409EFF'
+  },
+  /*
+  ** Plugins to load before mounting the App
+  */
+  plugins: [
+    '@/plugins/vue-readmore'
+  ],
+  /*
+  ** Nuxt.js dev-modules
+  */
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/vuetify'
+  ],
+  /*
+  ** Nuxt.js modules
+  */
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  /*
+  ** Axios module configuration
+  ** See https://axios.nuxtjs.org/options
+  */
   axios: {
+    baseURL: API_ADDRESS,
     debug: isDebugMode,
-    progress: false,
+    progress: true,
     retry: {
       retries: 3
     },
-    baseURL: process.env.SERVER_ADDRESS
+    proxyHeaders: false
   },
+  /*
+  ** Build configuration
+  */
   vuetify: {
     theme: {
       dark: false,

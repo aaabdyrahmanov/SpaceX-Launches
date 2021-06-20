@@ -9,9 +9,9 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import Header from '@/components/Header'
-import TitleIcon from '@/components/TitleIcon'
-import Pagination from '@/components/Pagination'
+import Header from '@/components/Navigation/Header'
+import TitleIcon from '@/components/UI/TitleIcon'
+import Pagination from '@/components/UI/Pagination'
 
 export default {
   components: {

@@ -10,6 +10,25 @@
   </div>
 </template>
 
+<script>
+export default {
+  name: 'Header',
+  props: {
+    data: {
+      type: Object,
+      required: false
+    },
+    duration: {
+      type: Array,
+      required: false
+    }
+  },
+  data: () => ({
+    names: ['Seconds', 'Minutes', 'Hours', 'Days']
+  })
+}
+</script>
+
 <style>
 .title {
   font-family: "Quicksand", "Source Sans Pro", -apple-system, BlinkMacSystemFont,

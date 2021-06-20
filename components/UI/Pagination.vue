@@ -17,6 +17,7 @@
 import Timeline from './Timeline'
 
 export default {
+  name: 'Pagination',
   components: {
     Timeline
   },
