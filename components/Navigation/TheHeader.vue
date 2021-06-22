@@ -3,7 +3,7 @@
     <nuxt-link to="/">
       <div class="title mt-8 text-center">
         <h1>
-          SpaceX Launches
+          {{ title }}
         </h1>
       </div>
     </nuxt-link>
@@ -12,19 +12,9 @@
 
 <script>
 export default {
-  name: 'Header',
-  props: {
-    data: {
-      type: Object,
-      required: false
-    },
-    duration: {
-      type: Array,
-      required: false
-    }
-  },
+  name: 'TheHeader',
   data: () => ({
-    names: ['Seconds', 'Minutes', 'Hours', 'Days']
+    title: 'SpaceX Launches'
   })
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto">
-    <Header />
+    <the-navbar />
     <v-row class="mt-6">
       <v-col>
         <v-bottom-navigation
@@ -29,40 +29,16 @@
       </v-col>
     </v-row>
     <div v-if="bottomNavBoolean">
-      <div v-if="nextSpaceX">
-        <base-next
-          :data="nextSpaceX"
-          :duration="remainingTime"
-        />
-      </div>
+      <base-next
+        :data="nextSpaceX"
+        :duration="remainingTime"
+      />
     </div>
     <div v-else>
       <base-latest
         :duration="recentLaunchDate"
         :data="latestSpaceX"
       />
-    </div>
-    <div class="detail_option mx-auto mt-6">
-      <nuxt-link :to="'/launches/past'">
-        <v-btn
-          class="ma-2"
-          outlined
-          rounded
-          color="indigo"
-        >
-          Past Launches
-        </v-btn>
-      </nuxt-link>
-      <nuxt-link :to="'/launches/upcoming'">
-        <v-btn
-          class="ma-2"
-          outlined
-          rounded
-          color="indigo"
-        >
-          Upcoming Launches
-        </v-btn>
-      </nuxt-link>
     </div>
   </div>
 </template>
@@ -73,15 +49,15 @@ import { mapState, mapGetters } from 'vuex'
 import Moment from 'moment/moment'
 import 'moment-duration-format'
 
-import BaseLatest from '@/components/BaseLatest'
+import TheNavbar from '@/components/Navigation/TheNavbar'
 import BaseNext from '@/components/BaseNext'
-import Header from '@/components/Navigation/Header'
+import BaseLatest from '@/components/BaseLatest'
 
 export default {
   components: {
-    Header,
-    BaseNext,
-    BaseLatest
+    'the-navbar': TheNavbar,
+    'base-next': BaseNext,
+    'base-latest': BaseLatest
   },
   async fetch ({ store }) {
     await store.dispatch('sources/fetchLatest')
@@ -143,11 +119,3 @@ export default {
   })
 }
 </script>
-
-<style scoped>
-.detail_option {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-</style>
