@@ -71,32 +71,10 @@ const data = {
   },
   getters: {
     getLaunchedData: (state) => {
-      const arrayData = []
-      state.launchedRockets.map((o, i) => {
-        arrayData.push({
-          flightNumber: state.launchedRockets[i].flight_number,
-          launchDetail: state.launchedRockets[i].details,
-          missionName: state.launchedRockets[i].name,
-          rocketIcon: state.launchedRockets[i].links.patch.small,
-          launchSuccess: state.launchedRockets[i].success,
-          launchDate: state.launchedRockets[i].date_utc
-        })
-      })
-      return arrayData
+      return state.launchedRockets
     },
     getUpcomingData: (state) => {
-      const arrayData = []
-      state.upcomingRockets.map((p, i) => {
-        arrayData.push({
-          flightNumber: state.upcomingRockets[i].flight_number,
-          launchDetail: state.upcomingRockets[i].details,
-          missionName: state.upcomingRockets[i].name,
-          rocketIcon: state.upcomingRockets[i].links.patch.small,
-          launchSuccess: state.upcomingRockets[i].success,
-          launchDate: state.upcomingRockets[i].date_utc
-        })
-      })
-      return arrayData
+      return state.upcomingRockets
     },
     getNextLaunchDate: (state) => {
       return state.nextSpaceX.date_utc

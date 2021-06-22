@@ -1,46 +1,44 @@
 <template>
-  <div>
-    <v-timeline class="container">
-      <v-timeline-item v-for="(info, index) in data" :key="index">
-        <template v-slot:icon>
-          <v-avatar>
-            <img :src="info.rocketIcon" class="rocket-icon">
-          </v-avatar>
-        </template>
-        <template v-slot:opposite>
-          <span>{{ info.rocketNationality }}</span>
-        </template>
-        <v-card class="elevation-17">
-          <v-card-title class="headline">
-            <div class="flight-number">
-              {{ info.flightNumber }}
-            </div>
-            <div class="mission-name">
-              {{ info.missionName }}
-            </div>
-            |
-            <div v-if="info.launchSuccess === true" class="success-msg">
-              <i class="fa fa-check" />
-            </div>
-            <div v-else class="error-msg">
-              <i class="fa fa-times-circle" />
-            </div>
-          </v-card-title>
-          <div v-if="info.launchDetail !== null">
-            <v-card-text>
-              <read-more
-                :text="info.launchDetail"
-                :max-chars="80"
-                more-str="read more"
-                link="#"
-                less-str="read less"
-              />
-            </v-card-text>
+  <v-timeline class="container">
+    <v-timeline-item v-for="(info, index) in data" :key="index">
+      <template v-slot:icon>
+        <v-avatar>
+          <img :src="info.links.patch.small" class="rocket-icon">
+        </v-avatar>
+      </template>
+      <template v-slot:opposite>
+        <span>{{ info.rocketNationality }}</span>
+      </template>
+      <v-card class="elevation-17">
+        <v-card-title class="headline">
+          <div class="flight-number">
+            {{ info.flight_number }}
           </div>
-        </v-card>
-      </v-timeline-item>
-    </v-timeline>
-  </div>
+          <div class="mission-name">
+            {{ info.name }}
+          </div>
+          |
+          <div v-if="info.success === true" class="success-msg">
+            <i class="fa fa-check" />
+          </div>
+          <div v-else class="error-msg">
+            <i class="fa fa-times-circle" />
+          </div>
+        </v-card-title>
+        <div v-if="info.details !== null">
+          <v-card-text>
+            <read-more
+              :text="info.details"
+              :max-chars="80"
+              more-str="read more"
+              link="#"
+              less-str="read less"
+            />
+          </v-card-text>
+        </div>
+      </v-card>
+    </v-timeline-item>
+  </v-timeline>
 </template>
 
 <script>
