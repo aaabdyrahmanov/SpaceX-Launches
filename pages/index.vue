@@ -1,5 +1,6 @@
 <template>
   <div class="mx-auto">
+    <the-navbar />
     <v-row class="mt-6">
       <v-col>
         <v-bottom-navigation
@@ -41,28 +42,6 @@
         :data="latestSpaceX"
       />
     </div>
-    <div class="detail_option mx-auto mt-6">
-      <nuxt-link :to="'/launches/past'">
-        <v-btn
-          class="ma-2"
-          outlined
-          rounded
-          color="indigo"
-        >
-          Past Launches
-        </v-btn>
-      </nuxt-link>
-      <nuxt-link :to="'/launches/upcoming'">
-        <v-btn
-          class="ma-2"
-          outlined
-          rounded
-          color="indigo"
-        >
-          Upcoming Launches
-        </v-btn>
-      </nuxt-link>
-    </div>
   </div>
 </template>
 
@@ -72,11 +51,13 @@ import { mapState, mapGetters } from 'vuex'
 import Moment from 'moment/moment'
 import 'moment-duration-format'
 
+import TheNavbar from '@/components/Navigation/TheNavbar'
 import BaseLatest from '@/components/BaseLatest'
 import BaseNext from '@/components/BaseNext'
 
 export default {
   components: {
+    'the-navbar': TheNavbar,
     BaseNext,
     BaseLatest
   },
@@ -140,11 +121,3 @@ export default {
   })
 }
 </script>
-
-<style scoped>
-.detail_option {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-}
-</style>
