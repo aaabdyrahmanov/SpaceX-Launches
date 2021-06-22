@@ -1,6 +1,5 @@
 <template>
   <div class="mx-auto">
-    <Header />
     <v-row class="mt-6">
       <v-col>
         <v-bottom-navigation
@@ -75,11 +74,9 @@ import 'moment-duration-format'
 
 import BaseLatest from '@/components/BaseLatest'
 import BaseNext from '@/components/BaseNext'
-import Header from '@/components/Navigation/Header'
 
 export default {
   components: {
-    Header,
     BaseNext,
     BaseLatest
   },

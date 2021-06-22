@@ -1,6 +1,5 @@
 <template>
   <div class="mb-6">
-    <Header />
     <title-icon
       :title="'Past'"
     />
@@ -17,13 +16,12 @@
 <script>
 import { mapGetters } from 'vuex'
 
-import Header from '@/components/Navigation/Header'
 import TitleIcon from '@/components/UI/TitleIcon'
 import Pagination from '@/components/UI/Pagination'
 
 export default {
   components: {
-    Header, TitleIcon, Pagination
+    TitleIcon, Pagination
   },
   async fetch ({ store }) {
     await store.dispatch('sources/fetchLaunched')
