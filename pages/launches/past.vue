@@ -3,13 +3,14 @@
     <title-icon
       :title="'Past'"
     />
-    <div
-      v-if="launchedRocketsData"
-    >
-      <Pagination
-        :data="launchedRocketsData"
-      />
-    </div>
+    <Timeline :data="paginatedData" />
+    <v-pagination
+      v-model="pageNumber"
+      :length="pageCount"
+      class="mt-5 mb-6"
+      prev-icon="mdi-menu-left"
+      next-icon="mdi-menu-right"
+    />
   </div>
 </template>
 
@@ -17,11 +18,12 @@
 import { mapGetters } from 'vuex'
 
 import TitleIcon from '@/components/UI/TitleIcon'
-import Pagination from '@/components/UI/Pagination'
+import Timeline from '@/components/UI/Timeline'
 
 export default {
   components: {
-    TitleIcon, Pagination
+    TitleIcon,
+    Timeline
   },
   async fetch ({ store }) {
     await store.dispatch('sources/fetchLaunched')
@@ -34,8 +36,20 @@ export default {
   },
   computed: {
     ...mapGetters({
-      launchedRocketsData: 'sources/getLaunchedData'
-    })
+      data: 'sources/getLaunchedData'
+    }),
+    pageCount () {
+      const l = this.data.length
+      const s = this.size
+
+      return Math.ceil(l / s)
+    },
+    paginatedData () {
+      const start = (this.pageNumber - 1) * this.size
+      const end = start + this.size
+
+      return this.data.slice(start, end)
+    }
   }
 }
 </script>

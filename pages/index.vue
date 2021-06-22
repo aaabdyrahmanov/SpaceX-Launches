@@ -29,12 +29,10 @@
       </v-col>
     </v-row>
     <div v-if="bottomNavBoolean">
-      <div v-if="nextSpaceX">
-        <base-next
-          :data="nextSpaceX"
-          :duration="remainingTime"
-        />
-      </div>
+      <base-next
+        :data="nextSpaceX"
+        :duration="remainingTime"
+      />
     </div>
     <div v-else>
       <base-latest
@@ -52,14 +50,14 @@ import Moment from 'moment/moment'
 import 'moment-duration-format'
 
 import TheNavbar from '@/components/Navigation/TheNavbar'
-import BaseLatest from '@/components/BaseLatest'
 import BaseNext from '@/components/BaseNext'
+import BaseLatest from '@/components/BaseLatest'
 
 export default {
   components: {
     'the-navbar': TheNavbar,
-    BaseNext,
-    BaseLatest
+    'base-next': BaseNext,
+    'base-latest': BaseLatest
   },
   async fetch ({ store }) {
     await store.dispatch('sources/fetchLatest')
